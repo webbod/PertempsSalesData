@@ -2,7 +2,7 @@
 using Pertemps.Common.Enumerations;
 using System;
 
-namespace Pertemps.Models.QueryFactories
+namespace Pertemps.Models.QueryParameters
 {
     public class SalesQueryParameters : IIsAQueryParameterSet
     {

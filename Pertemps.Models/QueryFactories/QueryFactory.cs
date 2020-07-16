@@ -3,6 +3,7 @@ using Pertemps.Common.Enumerations;
 using Pertemps.Factories;
 using System;
 using Pertemps.Models.Queries;
+using Pertemps.Models.QueryParameters;
 
 namespace Pertemps.Models.QueryFactories
 {

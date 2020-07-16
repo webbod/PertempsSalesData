@@ -3,9 +3,10 @@ using Pertemps.Repository;
 
 namespace Pertemps.Concrete.Models.Repositories
 {
-    public class PertempsData : AUnitOfWork, IIsAPertempsDataSource
+    public class PertempsDataService : AUnitOfWork, IIsAPertempsDataService
     {
         private IIsASalesDataRepository _SalesData;
+
 
         public IIsASalesDataRepository SalesData
         {
@@ -25,7 +26,9 @@ namespace Pertemps.Concrete.Models.Repositories
             }
         }
 
-        public PertempsData(string connectionString) : base(connectionString)
+        public PertempsDataService() { }
+
+        public PertempsDataService(string connectionString) : base(connectionString)
         {
         }
     }

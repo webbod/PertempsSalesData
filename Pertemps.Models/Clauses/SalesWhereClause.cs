@@ -2,6 +2,7 @@
 using Pertemps.Interfaces.Query;
 using Pertemps.Models.QueryFactories;
 using Pertemps.Models.QueryLogic;
+using Pertemps.Models.QueryParameters;
 using Pertemps.QueryDecorators.Clauses;
 
 namespace Pertemps.Models.Clauses

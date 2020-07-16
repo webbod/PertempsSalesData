@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Pertemps.Concrete.Interfaces;
+using Pertemps.Concrete.Models.Repositories;
+using Pertemps.ConcreteModels;
 
 namespace Pertemps.Web
 {
@@ -23,6 +26,12 @@ namespace Pertemps.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // get the connection
+            services.Configure<DatabaseOptions>(con => Configuration.GetSection("DefaultConnection").Bind(con));
+
+            // register the data service
+            services.AddScoped<IIsAPertempsDataService, PertempsDataService>();
+
             services.AddControllersWithViews();
         }
 

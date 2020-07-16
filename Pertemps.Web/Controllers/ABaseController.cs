@@ -1,17 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using Pertemps.Concrete.Interfaces;
+using Pertemps.ConcreteModels;
+using System;
 
 namespace Pertemps.Web.Controllers
 {
-    public class ABaseController
+    public class ABaseController : Controller
     {
-        IServiceProvider ServiceProvider;
+        private readonly DatabaseOptions _DatabaseOptions;
+        protected IIsAPertempsDataService DataService;
 
-        public ABaseController(IServiceProvider serviceProvider)
+        public ABaseController( 
+            IIsAPertempsDataService dataService,
+            IOptions<DatabaseOptions> databaseOptions)
         {
-            ServiceProvider = serviceProvider;
+            _DatabaseOptions = databaseOptions.Value;
+            DataService = dataService;
+
+            DataService.Initalise(_DatabaseOptions);
         }
     }
 }

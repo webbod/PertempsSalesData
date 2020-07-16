@@ -4,8 +4,8 @@ using System.Text;
 
 namespace Pertemps.Interfaces.Repository
 {
-    public interface IIsAUnitOfWork
+    public interface IIsASetOfDatabaseOptions
     {
-        void Initalise(IIsASetOfDatabaseOptions options);
+        string ConnectionString { get; }
     }
 }

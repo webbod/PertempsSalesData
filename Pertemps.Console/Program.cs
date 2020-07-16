@@ -4,6 +4,7 @@ using Pertemps.Concrete.Models.Repositories;
 using Pertemps.Models.Business;
 using Pertemps.Models.Entities;
 using Pertemps.Models.QueryFactories;
+using Pertemps.Models.QueryParameters;
 
 namespace Pertemps.Console
 {
@@ -37,7 +38,7 @@ namespace Pertemps.Console
 
         public static List<SalesSummaryData> GetSalesSummary(SalesQueryParameters queryData, string cnn)
         {
-            var pertempsData = new PertempsData(cnn);
+            var pertempsData = new PertempsDataService(cnn);
             return pertempsData.SalesData.GetSalesSummary(queryData);
         }
 

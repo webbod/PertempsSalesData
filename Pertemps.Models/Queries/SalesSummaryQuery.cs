@@ -1,6 +1,7 @@
 ﻿using Pertemps.Common.Enumerations;
 using Pertemps.Interfaces.Query;
 using Pertemps.Models.QueryFactories;
+using Pertemps.Models.QueryParameters;
 using System.Text;
 
 namespace Pertemps.Models.Queries

@@ -4,6 +4,7 @@ using Pertemps.Concrete.Interfaces;
 using Pertemps.Models.Business;
 using Pertemps.Models.Entities;
 using Pertemps.Models.QueryFactories;
+using Pertemps.Models.QueryParameters;
 using System.Collections.Generic;
 using System.Linq;
 

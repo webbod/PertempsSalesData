@@ -9,10 +9,16 @@ namespace Pertemps.Repository
     {
         protected string ConnectionString { get; private set; }
         
+        public AUnitOfWork() { }
+
         public AUnitOfWork(string connectionString)
         {
             ConnectionString = connectionString;
         }
 
+        public void Initalise(IIsASetOfDatabaseOptions options)
+        {
+            ConnectionString = options.ConnectionString;
+        }
     }
 }

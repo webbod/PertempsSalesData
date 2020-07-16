@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Pertemps.Models.Business;
-using Pertemps.Models.QueryFactories;
+using Pertemps.Models.QueryParameters;
 
 namespace Pertemps.Concrete.Interfaces
 {
