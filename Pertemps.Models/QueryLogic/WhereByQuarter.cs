@@ -11,6 +11,7 @@ namespace Pertemps.Models.QueryLogic
         protected int Year;
 
         public string StartDate => CalculateStartDate();
+
         public string EndDate => CalculateEndDate();
 
         public WhereByQuarter(int year, Quarter quarter, DatabaseField fieldName, IIsAQueryClause andAlso = null)

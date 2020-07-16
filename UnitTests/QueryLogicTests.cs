@@ -49,16 +49,17 @@ namespace UnitTests
         }
         
         [Theory]
-        [InlineData(2011, Quarter.Q1, DatabaseField.OrderDate, "convert(datetime, [order date]) between '2011/01/01' and '2011/03/31'")]
-        [InlineData(2011, Quarter.Q2, DatabaseField.OrderDate, "convert(datetime, [order date]) between '2011/04/01' and '2011/06/30'")]
-        [InlineData(2011, Quarter.Q3, DatabaseField.OrderDate, "convert(datetime, [order date]) between '2011/07/01' and '2011/09/30'")]
-        [InlineData(2011, Quarter.Q4, DatabaseField.OrderDate, "convert(datetime, [order date]) between '2011/10/01' and '2011/12/31'")]
-        public void WhereByQuarterCompilesCorrectly(int year, Quarter quarter, DatabaseField field, string expected)
+        [InlineData(2011, Quarter.Q1, DatabaseField.OrderDate, "2011/01/01", "2011/03/31")]
+        [InlineData(2014, Quarter.Q2, DatabaseField.OrderDate, "2014/04/01", "2014/06/30")]
+        [InlineData(2012, Quarter.Q3, DatabaseField.OrderDate, "2012/07/01", "2012/09/30")]
+        [InlineData(2013, Quarter.Q4, DatabaseField.OrderDate, "2013/10/01", "2013/12/31")]
+        public void WhereByQuarterCalculatedDatesCorrectly(int year, Quarter quarter, DatabaseField field, string expectedStart, string expectedEnd)
         {
             var objectUnderTest = new WhereByQuarter(year, quarter, field);
-            var actual = objectUnderTest.Compile().Trim();
+            objectUnderTest.Compile();
 
-            Assert.Equal(expected, actual);
+            Assert.Equal(expectedStart, objectUnderTest.StartDate);
+            Assert.Equal(expectedEnd, objectUnderTest.EndDate);
         }
     }
 }

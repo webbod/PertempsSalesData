@@ -50,7 +50,24 @@ namespace UnitTests
                         Country = Country.SaintVincentandtheGrenadines,
                         Year = 2010, Quarter = Quarter.Q1
                     };
-
+                case "salesChannel":
+                    return new SalesQueryParameters
+                    {
+                        SalesChannel = SalesChannel.Offline,
+                        Year = 2010, Quarter = Quarter.Q1
+                    };
+                case "orderPriority":
+                    return new SalesQueryParameters
+                    {
+                        OrderPriority = OrderPriority.H,
+                        Year = 2010, Quarter = Quarter.Q1
+                    };
+                case "itemType":
+                    return new SalesQueryParameters
+                    {
+                        ItemType = ItemType.Beverages,
+                        Year = 2010, Quarter = Quarter.Q1
+                    };
                 case "empty":
                 default:
                     return new SalesQueryParameters();
@@ -67,6 +84,10 @@ namespace UnitTests
         [InlineData("country", false, typeof(WhereCountryIs))]
         [InlineData("region", false, typeof(WhereRegionIs))]
         [InlineData("countryAndRegion", false, typeof(WhereCountryIs))]
+
+        [InlineData("salesChannel", false, typeof(WhereSalesChannelIs))]
+        [InlineData("orderPriority", false, typeof(WherePriorityIs))]
+        [InlineData("itemType", false, typeof(WhereItemTypeIs))]
 
         public void SalesWhereClauseCompilesCorrectly(string testCaseName, bool shouldThrowException, Type expected)
         {
