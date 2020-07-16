@@ -1,5 +1,4 @@
 ﻿using Pertemps.Interfaces.Factory;
-using Pertemps.Interfaces.Query;
 
 namespace Pertemps.Factories
 {

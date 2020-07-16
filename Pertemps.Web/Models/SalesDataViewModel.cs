@@ -1,11 +1,9 @@
 ﻿using Pertemps.Common.Enumerations;
-using Pertemps.Models.Business;
+using Pertemps.Models.BusinessModels;
 using Pertemps.Models.QueryParameters;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Pertemps.Web.Models
 {

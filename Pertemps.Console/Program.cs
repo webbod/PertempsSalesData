@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using Pertemps.Common.Enumerations;
+﻿using Pertemps.Common.Enumerations;
 using Pertemps.Concrete.Models.Repositories;
-using Pertemps.Models.Business;
-using Pertemps.Models.Entities;
+using Pertemps.Models.BusinessModels;
 using Pertemps.Models.QueryFactories;
 using Pertemps.Models.QueryParameters;
+using System.Collections.Generic;
 
 namespace Pertemps.Console
 {

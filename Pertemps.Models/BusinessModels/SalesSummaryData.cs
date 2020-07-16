@@ -4,9 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Pertemps.Models.Business
+namespace Pertemps.Models.BusinessModels
 {
-    public class SalesSummaryData : SalesData
+    public class SalesSummaryData : SalesSummaryEntity
     {
         public decimal UnitsSoldPercentage { get; set; }
         public decimal TotalRevenuePercentage { get; set; }

@@ -1,9 +1,7 @@
 ﻿using Pertemps.Common.Enumerations;
-using Pertemps.Models.Business;
+using Pertemps.Models.BusinessModels;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Xunit;
 
 namespace UnitTests

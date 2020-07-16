@@ -3,7 +3,7 @@ using Pertemps.Interfaces.Repository;
 
 namespace Pertemps.Models.Entities
 {
-    public class SalesData : IIsAnEntity
+    public class SalesSummaryEntity : IIsSalesData
     {
         public string Category { get; set; }
         public DatabaseField Dimension { get; set; }

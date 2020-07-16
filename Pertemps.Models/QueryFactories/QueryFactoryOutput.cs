@@ -1,4 +1,5 @@
-﻿using Pertemps.Interfaces.Query;
+﻿using Pertemps.Common.Enumerations;
+using Pertemps.Interfaces.Query;
 
 namespace Pertemps.Models.QueryFactories
 {
@@ -11,6 +12,21 @@ namespace Pertemps.Models.QueryFactories
         public QueryFactoryOutput(string sql)
         {
             SQL = sql;
+        }
+
+        public static string SumAFieldExpression(DatabaseField field, string castingType = "decimal")
+        {
+            return $" SUM({CastFieldToNumeric(field, castingType)}) as {field.ToString()} ";
+        }
+
+        public static string CastFieldToNumeric(DatabaseField field, string castingType = "decimal")
+        {
+            return $" CONVERT({castingType},{ field.GetDescription()} ";
+        }
+
+        public static string CastFieldToDate(DatabaseField field)
+        {
+            return $" CONVERT(VARCHAR,CONVERT(DATETIME, {field.GetDescription()}),23) ";
         }
     }
 }

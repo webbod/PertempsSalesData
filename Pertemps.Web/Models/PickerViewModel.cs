@@ -1,8 +1,4 @@
 ﻿using Pertemps.Common.Enumerations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Pertemps.Web.Models
 {

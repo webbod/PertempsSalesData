@@ -4,8 +4,6 @@ using Pertemps.Models.QueryLogic;
 using Pertemps.Models.QueryParameters;
 using Pertemps.QueryDecorators.Clauses;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace UnitTests

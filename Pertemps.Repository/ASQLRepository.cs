@@ -19,7 +19,7 @@ namespace Pertemps.Repository
             return new SqlConnection(ConnectionString);
         }
 
-        protected abstract IEnumerable<TEntityType> ExecuteQuery(string query);
+        protected abstract IEnumerable<TReturnType> ExecuteQuery<TReturnType>(string query) where TReturnType : TEntityType;
     }
 }
 

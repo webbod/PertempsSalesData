@@ -1,6 +1,6 @@
 ﻿namespace Pertemps.Interfaces.Repository
 {
-    public interface IIsAnEntity
+    public interface IIsSalesData : IIsAnEntity
     {
     }
 }

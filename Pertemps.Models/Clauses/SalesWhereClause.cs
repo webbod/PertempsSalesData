@@ -1,6 +1,5 @@
 ﻿using Pertemps.Common.Enumerations;
 using Pertemps.Interfaces.Query;
-using Pertemps.Models.QueryFactories;
 using Pertemps.Models.QueryLogic;
 using Pertemps.Models.QueryParameters;
 using Pertemps.QueryDecorators.Clauses;

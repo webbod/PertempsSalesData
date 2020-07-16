@@ -19,7 +19,7 @@ namespace Pertemps.Models.Queries
             sb.AppendLine("union all");
             sb.AppendLine(SalesTotalsGroupedByColumn(DatabaseField.SalesChannel, whereClause));
             sb.AppendLine("union all");
-            sb.AppendLine(SalesTotalsGroupedByColumn("convert(varchar,convert(datetime, [order date]),23)", DatabaseField.OrderDate.ToString(), whereClause));
+            sb.AppendLine(SalesTotalsGroupedByColumn(CastFieldToDate(DatabaseField.OrderDate), DatabaseField.OrderDate.ToString(), whereClause));
 
             SQL = sb.ToString();
         }
@@ -39,9 +39,6 @@ namespace Pertemps.Models.Queries
                  + $" GROUP BY {column} ";
         }
 
-        public static string SumAFieldExpression(DatabaseField field)
-        {
-            return $" SUM(CONVERT(decimal,{field.GetDescription()})) as {field.ToString()} ";
-        }
+
     }
 }

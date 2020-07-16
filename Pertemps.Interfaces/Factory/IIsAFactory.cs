@@ -1,6 +1,4 @@
-﻿using Pertemps.Interfaces.Query;
-
-namespace Pertemps.Interfaces.Factory
+﻿namespace Pertemps.Interfaces.Factory
 {
     public interface IIsAFactory<TInputType, TOutputType>
         where TInputType : IIsAFactoryInput

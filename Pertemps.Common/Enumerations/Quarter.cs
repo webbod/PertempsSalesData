@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Pertemps.Common.Enumerations
+﻿namespace Pertemps.Common.Enumerations
 {
     public enum Quarter
     {

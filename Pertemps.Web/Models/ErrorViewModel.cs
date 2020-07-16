@@ -1,5 +1,3 @@
-using System;
-
 namespace Pertemps.Web.Models
 {
     public class ErrorViewModel

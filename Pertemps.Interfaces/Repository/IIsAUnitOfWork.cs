@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Pertemps.Interfaces.Repository
+﻿namespace Pertemps.Interfaces.Repository
 {
     public interface IIsAUnitOfWork
     {
