@@ -14,6 +14,16 @@ namespace Pertemps.Models.QueryLogic
         public WhereDateRange(DateTime startDate, DateTime endDate, DatabaseField fieldName, IIsAQueryClause andAlso = null)
             : base(fieldName.GetDescription(), startDate, andAlso)
         {
+            if(startDate == default || endDate == default)
+            {
+                throw new ArgumentNullException();
+            }
+
+            if (startDate > endDate)
+            {
+                throw new ArgumentException();
+            }
+
             EndDate = endDate;
         }
 

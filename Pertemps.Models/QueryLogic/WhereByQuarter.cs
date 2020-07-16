@@ -10,12 +10,16 @@ namespace Pertemps.Models.QueryLogic
         protected Quarter Quarter => Value;
         protected int Year;
 
-        protected string StartDate => CalculateStartDate();
-        protected string EndDate => CalculateEndDate();
+        public string StartDate => CalculateStartDate();
+        public string EndDate => CalculateEndDate();
 
         public WhereByQuarter(int year, Quarter quarter, DatabaseField fieldName, IIsAQueryClause andAlso = null)
             : base(fieldName.GetDescription(), quarter, andAlso)
         {
+            if(year < 2010 || year > DateTime.Now.Year)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
             Year = year < 100 ? year + 2000 : year;
         }
 
