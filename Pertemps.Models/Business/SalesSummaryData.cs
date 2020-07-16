@@ -18,13 +18,12 @@ namespace Pertemps.Models.Business
     {
         public static List<SalesSummaryData> ComputePercentages(this List<SalesSummaryData> data, DatabaseField column)
         {
-            var dimension = column.ToString();
-            var dimensionData = data.Where(r => r.Dimension == dimension);
+            var dimensionData = data.Where(r => r.Dimension.Equals(column));
 
             var totals = new SalesSummaryData
             {
                 Category = "**TOTAL**",
-                Dimension = dimension,
+                Dimension = column,
                 UnitsSold = dimensionData.Sum(r => r.UnitsSold),
                 TotalRevenue = dimensionData.Sum(r => r.TotalRevenue),
                 TotalCost = dimensionData.Sum(r => r.TotalCost),

@@ -1,0 +1,24 @@
+﻿using Pertemps.Common.Enumerations;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace Pertemps.Web.Models
+{
+    public class PickerViewModel
+    {
+        public int Year;
+        public Quarter Quarter;
+        public Country Country;
+        public Region Region;
+
+        public PickerViewModel()
+        {
+            Region = Region.Undefined;
+            Country = Country.UnitedKingdom;
+            Year = 2010;
+            Quarter = Quarter.Q1;
+        }
+    }
+}

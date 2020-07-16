@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -17,6 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Pertemps.Concrete.Interfaces\Pertemps.Concrete.Interfaces.csproj" />
     <ProjectReference Include="..\Pertemps.ConcreteModels\Pertemps.ConcreteModels.csproj" />
+    <ProjectReference Include="..\Pertemps.Repository\Pertemps.Repository.csproj" />
   </ItemGroup>
 
 </Project>

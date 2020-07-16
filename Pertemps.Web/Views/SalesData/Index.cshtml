@@ -1,17 +1,77 @@
-﻿@using Pertemps.Models.QueryParameters;
+﻿@using Pertemps.Models.Business;
+@using Pertemps.Common.Enumerations;
+@model Pertemps.Web.Models.SalesSummaryViewModel
 @{
     ViewData["Title"] = "Index";
-    var queryParams = (SalesQueryParameters)ViewData["QueryParams"];
-    var urlBase = "/Analytics/SalesData/Index/";
 }
 
+<h1>🌍 @Model.Geography Sales Summary</h1>
+<h2><a href="/Analytics/SalesData/ByPeriod/">@Model.Period</a></h2>
+<h3>For @Model.DivisionCaption - @Model.SalesChannelCaption - @Model.OrderPriorityCaption </h3>
 
-<h1>Index</h1>
-<ul>
-    <li>@queryParams.Region</li>
-    <li>@queryParams.Country</li>
-    <li>@queryParams.ItemType</li>
-    <li>@queryParams.SalesChannel</li>
-    <li>@queryParams.OrderPriority</li>
-</ul>
+<section>
+    <h4>By Division @{ RenderShowAll(DatabaseField.ItemType, Model.QueryParams.ItemType.ToString()); } </h4>
+    @{ RenderTable(Model.DivisionData, "Category", DatabaseField.ItemType); }
+</section>
+<section>
+    <h4>By Channel  @{ RenderShowAll(DatabaseField.SalesChannel, Model.QueryParams.SalesChannel.ToString()); } </h4>
+    @{ RenderTable(Model.SalesChannelData, "Category", DatabaseField.SalesChannel); }
+</section>
+<section>
+    <h4>By Order Priority  @{ RenderShowAll(DatabaseField.OrderPriority, Model.QueryParams.OrderPriority.ToString()); } </h4>
+    @{ RenderTable(Model.OrderPriorityData, "Category", DatabaseField.OrderPriority); }
+</section>
+
+<section>
+    <h4>Daily </h4>
+    @{ RenderTable(Model.DailyData, "Date", DatabaseField.OrderPriority, filterable:false); }
+</section>
+
+@{
+    void RenderShowAll(DatabaseField section, string currentFilterValue)
+    {
+        if (currentFilterValue != "Undefined")
+        {
+            <a href="@Model.BuildURL(section, "All")" class="showAll">Show all</a>
+        }
+    }
+
+    void RenderTable(List<SalesSummaryData> items, string caption, DatabaseField section, bool filterable = true)
+    {
+
+        <table>
+            <thead>
+                <tr>
+                    <th>@caption</th>
+                    <th class="numeric">Units Sold</th>
+                    <th class="numeric">Total Cost</th>
+                    <th class="numeric">Total Revenue</th>
+                    <th class="numeric">Total Profit</th>
+                </tr>
+            </thead>
+
+            @foreach (var item in items)
+            {
+                <tr>
+                    <td>
+                        @if (filterable)
+                        {
+                            <a href="@Model.BuildURL(section, item.Category)">@item.Category</a>
+                        }
+                        else
+                        {
+                            @item.Category
+                        }
+                    </td>
+                    <td class="numeric">@item.UnitsSold.ToString("###,###,###")</td>
+                    <td class="numeric">@item.TotalCost.ToString("£###,###,###.00")</td>
+                    <td class="numeric">@item.TotalRevenue.ToString("£###,###,###.00")</td>
+                    <td class="numeric">@item.TotalProfit.ToString("£###,###,###.00")</td>
+                </tr>
+            }
+
+        </table>
+
+    }
+}
 

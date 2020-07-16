@@ -22,8 +22,8 @@ namespace Pertemps.Common.Enumerations
         [Description("Angola")]
         Angola,
 
-        [Description("AntiguaandBarbuda")]
-        AntiguaandBarbuda,
+        [Description("Antigua and Barbuda")]
+        AntiguaAndBarbuda,
 
         [Description("Armenia")]
         Armenia,
@@ -37,7 +37,7 @@ namespace Pertemps.Common.Enumerations
         [Description("Azerbaijan")]
         Azerbaijan,
 
-        [Description("TheBahamas")]
+        [Description("The Bahamas")]
         Bahamas,
 
         [Description("Bahrain")]
@@ -64,8 +64,8 @@ namespace Pertemps.Common.Enumerations
         [Description("Bhutan")]
         Bhutan,
 
-        [Description("BosniaandHerzegovina")]
-        BosniaandHerzegovina,
+        [Description("Bosnia and Herzegovina")]
+        BosniaAndHerzegovina,
 
         [Description("Botswana")]
         Botswana,
@@ -94,7 +94,7 @@ namespace Pertemps.Common.Enumerations
         [Description("CapeVerde")]
         CapeVerde,
 
-        [Description("CentralAfricanRepublic")]
+        [Description("Central African Republic")]
         CentralAfricanRepublic,
 
         [Description("Chad")]
@@ -109,7 +109,7 @@ namespace Pertemps.Common.Enumerations
         [Description("CostaRica")]
         CostaRica,
 
-        [Description("Coted'Ivoire")]
+        [Description("Cote d'Ivoire")]
         CotedIvoire,
 
         [Description("Croatia")]
@@ -121,10 +121,10 @@ namespace Pertemps.Common.Enumerations
         [Description("Cyprus")]
         Cyprus,
 
-        [Description("CzechRepublic")]
+        [Description("Czech Republic")]
         CzechRepublic,
 
-        [Description("DemocraticRepublicoftheCongo")]
+        [Description("Democratic Republic of the Congo")]
         DemocraticRepublicoftheCongo,
 
         [Description("Denmark")]
@@ -136,19 +136,19 @@ namespace Pertemps.Common.Enumerations
         [Description("Dominica")]
         Dominica,
 
-        [Description("DominicanRepublic")]
+        [Description("Dominican Republic")]
         DominicanRepublic,
 
-        [Description("EastTimor")]
+        [Description("East Timor")]
         EastTimor,
 
         [Description("Egypt")]
         Egypt,
 
-        [Description("ElSalvador")]
+        [Description("El Salvador")]
         ElSalvador,
 
-        [Description("EquatorialGuinea")]
+        [Description("Equatorial Guinea")]
         EquatorialGuinea,
 
         [Description("Eritrea")]
@@ -160,7 +160,7 @@ namespace Pertemps.Common.Enumerations
         [Description("Ethiopia")]
         Ethiopia,
 
-        [Description("FederatedStatesofMicronesia")]
+        [Description("Federated States of Micronesia")]
         FederatedStatesofMicronesia,
 
         [Description("Fiji")]
@@ -175,7 +175,7 @@ namespace Pertemps.Common.Enumerations
         [Description("Gabon")]
         Gabon,
 
-        [Description("TheGambia")]
+        [Description("The Gambia")]
         Gambia,
 
         [Description("Georgia")]
@@ -202,7 +202,7 @@ namespace Pertemps.Common.Enumerations
         [Description("Guinea")]
         Guinea,
 
-        [Description("GuineaBissau")]
+        [Description("Guinea Bissau")]
         GuineaBissau,
 
         [Description("Haiti")]
@@ -313,7 +313,7 @@ namespace Pertemps.Common.Enumerations
         [Description("Malta")]
         Malta,
 
-        [Description("MarshallIslands")]
+        [Description("Marshall Islands")]
         MarshallIslands,
 
         [Description("Mauritania")]
@@ -370,7 +370,7 @@ namespace Pertemps.Common.Enumerations
         [Description("Nigeria")]
         Nigeria,
 
-        [Description("NorthKorea")]
+        [Description("North Korea")]
         NorthKorea,
 
         [Description("Norway")]
@@ -388,7 +388,7 @@ namespace Pertemps.Common.Enumerations
         [Description("Panama")]
         Panama,
 
-        [Description("PapuaNewGuinea")]
+        [Description("Papua New Guinea")]
         PapuaNewGuinea,
 
         [Description("Philippines")]
@@ -403,7 +403,7 @@ namespace Pertemps.Common.Enumerations
         [Description("Qatar")]
         Qatar,
 
-        [Description("RepublicoftheCongo")]
+        [Description("Republic of the Congo")]
         RepublicoftheCongo,
 
         [Description("Romania")]
@@ -415,13 +415,13 @@ namespace Pertemps.Common.Enumerations
         [Description("Rwanda")]
         Rwanda,
 
-        [Description("SaintKittsandNevis")]
+        [Description("Saint Kitts and Nevis")]
         SaintKittsandNevis,
 
         [Description("SaintLucia")]
         SaintLucia,
 
-        [Description("SaintVincentandtheGrenadines")]
+        [Description("Saint Vincent and the Grenadines")]
         SaintVincentandtheGrenadines,
 
         [Description("Samoa")]
@@ -430,10 +430,10 @@ namespace Pertemps.Common.Enumerations
         [Description("SanMarino")]
         SanMarino,
 
-        [Description("SaoTomeandPrincipe")]
+        [Description("Sao Tome and Principe")]
         SaoTomeandPrincipe,
 
-        [Description("SaudiArabia")]
+        [Description("Saudi Arabia")]
         SaudiArabia,
 
         [Description("Senegal")]
@@ -457,25 +457,25 @@ namespace Pertemps.Common.Enumerations
         [Description("Slovenia")]
         Slovenia,
 
-        [Description("SolomonIslands")]
+        [Description("Solomon Islands")]
         SolomonIslands,
 
         [Description("Somalia")]
         Somalia,
 
-        [Description("SouthAfrica")]
+        [Description("South Africa")]
         SouthAfrica,
 
-        [Description("SouthKorea")]
+        [Description("South Korea")]
         SouthKorea,
 
-        [Description("SouthSudan")]
+        [Description("South Sudan")]
         SouthSudan,
 
         [Description("Spain")]
         Spain,
 
-        [Description("SriLanka")]
+        [Description("Sri Lanka")]
         SriLanka,
 
         [Description("Sudan")]
@@ -511,7 +511,7 @@ namespace Pertemps.Common.Enumerations
         [Description("Tonga")]
         Tonga,
 
-        [Description("TrinidadandTobago")]
+        [Description("Trinidad and Tobago")]
         TrinidadandTobago,
 
         [Description("Tunisia")]
@@ -532,13 +532,13 @@ namespace Pertemps.Common.Enumerations
         [Description("Ukraine")]
         Ukraine,
 
-        [Description("UnitedArabEmirates")]
+        [Description("United Arab Emirates")]
         UnitedArabEmirates,
 
-        [Description("UnitedKingdom")]
+        [Description("United Kingdom")]
         UnitedKingdom,
 
-        [Description("UnitedStatesofAmerica")]
+        [Description("United States of America")]
         UnitedStatesofAmerica,
 
         [Description("Uzbekistan")]
@@ -547,7 +547,7 @@ namespace Pertemps.Common.Enumerations
         [Description("Vanuatu")]
         Vanuatu,
 
-        [Description("VaticanCity")]
+        [Description("Vatican City")]
         VaticanCity,
 
         [Description("Vietnam")]

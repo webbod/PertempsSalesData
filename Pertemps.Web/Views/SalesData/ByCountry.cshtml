@@ -1,0 +1,18 @@
+﻿@using Pertemps.Models.Business;
+@using Pertemps.Common.Enumerations;
+@model Pertemps.Web.Models.PickerViewModel;
+@{
+    ViewData["Title"] = "Choose a Country";
+}
+
+<h1>🌍 Choose a Country</h1>
+
+<section class="CountryPicker">
+    @foreach (Country value in Enum.GetValues(typeof(Country)))
+    {
+        @if (!value.Equals(Country.Undefined))
+        {
+        <div><a href="/Analytics/Report/SalesData/@Model.Year/@Model.Quarter/National/@value.ToString()">@value.GetDescription()</a></div>
+        }
+    }
+</section>

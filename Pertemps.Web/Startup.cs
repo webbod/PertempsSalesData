@@ -26,6 +26,15 @@ namespace Pertemps.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+
             // get the connection
             services.Configure<DatabaseOptions>(con => Configuration.GetSection("DefaultConnection").Bind(con));
 
@@ -48,6 +57,9 @@ namespace Pertemps.Web
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            
+            app.UseSession();
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -58,12 +70,19 @@ namespace Pertemps.Web
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "SalesDataPicker",
+                    pattern: "Analytics/{controller=SalesData}/{action=ByPeriod}");
+
+                endpoints.MapControllerRoute(
                     name: "SalesDataRegional",
                     pattern: "Analytics/{action=Report}/{controller=SalesData}/{year=2010}/{quarter=Q1}/{region=national}/{country=regional}/{itemType?}/{salesChannel?}/{orderPriority?}");
+
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=SalesData}/{action=ByCountry}/{id?}");
             });
+
+            
         }
     }
 }

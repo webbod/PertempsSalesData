@@ -1,0 +1,18 @@
+﻿@using Pertemps.Models.Business;
+@using Pertemps.Common.Enumerations;
+@model Pertemps.Web.Models.PickerViewModel;
+@{
+    ViewData["Title"] = "Choose a Region";
+}
+
+<h1>🌍 Choose a Region</h1>
+
+<section class="RegionPicker">
+    @foreach (Region value in Enum.GetValues(typeof(Region)))
+    {
+        @if (!value.Equals(Region.Undefined))
+        {
+            <div><a href="/Analytics/Report/SalesData/@Model.Year/@Model.Quarter/@value.ToString()/Regional">@value.GetDescription()</a></div>
+        }
+    }
+</section>

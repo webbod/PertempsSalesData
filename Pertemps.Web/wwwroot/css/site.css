@@ -69,3 +69,67 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+
+table {
+    width: 90%;
+    margin: 20px 5%;
+}
+
+th.numeric,
+td.numeric {
+    text-align: right;
+}
+
+a.showAll {
+    float: right;
+    font-size: 0.6em;
+    background: #eee;
+    padding: 5px;
+    border-radius: 5px;
+    border: #aaa 1px solid;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    text-align: right;
+    font-size: 1.5rem;
+}
+
+h3 {
+    text-align: right;
+    font-size: 1.1rem;
+}
+
+h4 {
+    border-bottom: #aaa 3px double;
+    padding: 10px 0px;
+    border-top: #aaa 3px double;
+}
+
+.RegionPicker div,
+.CountryPicker div {
+    display: inline-block;
+    width: 30%;
+    padding: 10px 5px;
+    min-height:50px;
+    background-color:#fcfcfc;
+    margin:5px;
+    border-radius:5px;
+    text-align:center;
+    border:#eee 1px solid;
+}
+
+.PeriodPicker div {
+    padding: 20px 0px 20px 30px;
+    min-height: 50px;
+    background-color: #fcfcfc;
+    margin: 5px;
+    border-radius: 5px;
+    text-align: center;
+    border: #eee 1px solid;
+    font-size:1.5rem;
+}
