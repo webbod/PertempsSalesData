@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.35" />
+    <PackageReference Include="System.Data.Common" Version="4.3.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Pertemps.Common\Pertemps.Common.csproj" />
+    <ProjectReference Include="..\Pertemps.ConcreteModels\Pertemps.ConcreteModels.csproj" />
+    <ProjectReference Include="..\Pertemps.Interfaces\Pertemps.Interfaces.csproj" />
+    <ProjectReference Include="..\Pertemps.Models\Pertemps.Models.csproj" />
+    <ProjectReference Include="..\Pertemps.Repository\Pertemps.Repository.csproj" />
+  </ItemGroup>
+
+</Project>

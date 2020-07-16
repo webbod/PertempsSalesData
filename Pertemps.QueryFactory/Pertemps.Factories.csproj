@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Pertemps.Interfaces\Pertemps.Interfaces.csproj" />
+    <ProjectReference Include="..\Pertemps.Query\Pertemps.QueryDecorators.csproj" />
+  </ItemGroup>
+
+</Project>

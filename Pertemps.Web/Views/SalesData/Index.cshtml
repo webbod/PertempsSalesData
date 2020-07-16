@@ -1,0 +1,17 @@
+﻿@using Pertemps.Models.QueryFactories;
+@{
+    ViewData["Title"] = "Index";
+    var queryParams = (SalesQueryParameters)ViewData["QueryParams"];
+    var urlBase = "/Analytics/SalesData/Index/";
+}
+
+
+<h1>Index</h1>
+<ul>
+    <li>@queryParams.Region</li>
+    <li>@queryParams.Country</li>
+    <li>@queryParams.ItemType</li>
+    <li>@queryParams.SalesChannel</li>
+    <li>@queryParams.OrderPriority</li>
+</ul>
+

@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Pertemps.Concrete.Interfaces\Pertemps.Concrete.Interfaces.csproj" />
+    <ProjectReference Include="..\Pertemps.Models\Pertemps.Models.csproj" />
+    <ProjectReference Include="..\Pertemps.QueryFactory\Pertemps.Factories.csproj" />
+    <ProjectReference Include="..\Pertemps.Repository\Pertemps.Repository.csproj" />
+  </ItemGroup>
+
+</Project>
