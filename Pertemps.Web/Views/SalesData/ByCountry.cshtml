@@ -12,7 +12,7 @@
     {
         @if (!value.Equals(Country.Undefined))
         {
-        <div><a href="/Analytics/Report/SalesData/@Model.Year/@Model.Quarter/National/@value.ToString()">@value.GetDescription()</a></div>
+        <div><a href="/Analytics/Report/SalesData/@Model.Year/@Model.Quarter/National/@value.ToString()/@Model.ItemType/@Model.SalesChannel/@Model.OrderPriority/">@value.GetDescription()</a></div>
         }
     }
 </section>

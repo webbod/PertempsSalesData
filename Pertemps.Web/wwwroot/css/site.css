@@ -133,3 +133,7 @@ h4 {
     border: #eee 1px solid;
     font-size:1.5rem;
 }
+
+nav {
+    text-align: right;
+}

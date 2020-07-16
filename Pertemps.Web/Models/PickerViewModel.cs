@@ -12,6 +12,9 @@ namespace Pertemps.Web.Models
         public Quarter Quarter;
         public Country Country;
         public Region Region;
+        public ItemType ItemType;
+        public SalesChannel SalesChannel;
+        public OrderPriority OrderPriority;
 
         public PickerViewModel()
         {
@@ -19,6 +22,9 @@ namespace Pertemps.Web.Models
             Country = Country.UnitedKingdom;
             Year = 2010;
             Quarter = Quarter.Q1;
+            ItemType = ItemType.Undefined;
+            SalesChannel = SalesChannel.Undefined;
+            OrderPriority = OrderPriority.Undefined;
         }
     }
 }

@@ -71,6 +71,10 @@ namespace Pertemps.Web.Controllers
                     model.Country = queryParams.Country;
                     model.Region = queryParams.Region;
                 }
+
+                model.ItemType = queryParams.ItemType;
+                model.SalesChannel = queryParams.SalesChannel;
+                model.OrderPriority = queryParams.OrderPriority;
             }
             catch(Exception)
             {

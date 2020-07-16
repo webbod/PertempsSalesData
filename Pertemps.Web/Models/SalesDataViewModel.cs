@@ -55,9 +55,9 @@ namespace Pertemps.Web.Models
 
             var sb = new StringBuilder($"{BaseUrl}{QueryParams.Year}/{QueryParams.Quarter}/{region}/{country}/");
 
-            sb.Append($"{(section == DatabaseField.ItemType ? value : QueryParams.ItemType.ToString())}/");
-            sb.Append($"{(section == DatabaseField.SalesChannel ? value : QueryParams.SalesChannel.ToString())}/");
-            sb.Append($"{(section == DatabaseField.OrderPriority ? value : QueryParams.OrderPriority.ToString())}/");
+            sb.Append($"{(section == DatabaseField.ItemType ? value.Replace(" ","_") : QueryParams.ItemType.ToString())}/");
+            sb.Append($"{(section == DatabaseField.SalesChannel ? value.Replace(" ", "_") : QueryParams.SalesChannel.ToString())}/");
+            sb.Append($"{(section == DatabaseField.OrderPriority ? value.Replace(" ", "_") : QueryParams.OrderPriority.ToString())}/");
 
             return sb.ToString();
         }
