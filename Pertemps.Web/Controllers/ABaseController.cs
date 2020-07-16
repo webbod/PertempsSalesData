@@ -66,7 +66,7 @@ namespace Pertemps.Web.Controllers
                     model.Quarter = queryParams.Quarter;
                 }
 
-                if(!queryParams.Country.Equals(Country.Undefined) && !queryParams.Region.Equals(Region.Undefined))
+                if(!queryParams.Country.Equals(Country.Undefined) || !queryParams.Region.Equals(Region.Undefined))
                 {
                     model.Country = queryParams.Country;
                     model.Region = queryParams.Region;

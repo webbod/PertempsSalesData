@@ -8,14 +8,14 @@
 <h1>📅 Choose a Period</h1>
 
 <section class="PeriodPicker">
-    @for(var year= 2010; year <= 2017; year++)
+    @for(var year = 2010; year <= 2017; year++)
     {
     <div>
         @year  : 
-        <a href="/Analytics/Report/SalesData/@Model.Year/@Quarter.Q1/@Model.Region/@Model.Country">@Quarter.Q1</a> | 
-        <a href="/Analytics/Report/SalesData/@Model.Year/@Quarter.Q2/@Model.Region/@Model.Country">@Quarter.Q2</a> |
-        <a href="/Analytics/Report/SalesData/@Model.Year/@Quarter.Q3/@Model.Region/@Model.Country">@Quarter.Q3</a> |
-        <a href="/Analytics/Report/SalesData/@Model.Year/@Quarter.Q4/@Model.Region/@Model.Country">@Quarter.Q4</a>
+        <a href="/Analytics/Report/SalesData/@year/@Quarter.Q1/@Model.Region/@Model.Country">@Quarter.Q1</a> | 
+        <a href="/Analytics/Report/SalesData/@year/@Quarter.Q2/@Model.Region/@Model.Country">@Quarter.Q2</a> |
+        <a href="/Analytics/Report/SalesData/@year/@Quarter.Q3/@Model.Region/@Model.Country">@Quarter.Q3</a> |
+        <a href="/Analytics/Report/SalesData/@year/@Quarter.Q4/@Model.Region/@Model.Country">@Quarter.Q4</a>
     </div>
     }
 </section>
