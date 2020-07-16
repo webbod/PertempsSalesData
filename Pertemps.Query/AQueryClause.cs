@@ -1,4 +1,5 @@
 ﻿using Pertemps.Interfaces.Query;
+using System;
 
 namespace Pertemps.QueryDecorators
 {
@@ -7,6 +8,8 @@ namespace Pertemps.QueryDecorators
         protected TValueType Value;
         protected string FieldName;
         protected IIsAQueryClause Clause;
+
+        public Type ClauseType => Clause == null ? null : Clause.GetType();
 
         public AQueryClause() {  }
 
