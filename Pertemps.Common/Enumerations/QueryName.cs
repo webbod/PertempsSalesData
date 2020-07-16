@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
+﻿using System.ComponentModel;
 
 namespace Pertemps.Common.Enumerations
 {
     public enum QueryName
     {
         [Description("Sales Summary")]
-        SalesSummary
+        SalesSummary,
+
+        [Description("Daily Sales Data")]
+        DailySales
     }
 }

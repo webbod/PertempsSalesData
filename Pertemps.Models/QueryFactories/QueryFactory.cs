@@ -15,6 +15,9 @@ namespace Pertemps.Models.QueryFactories
         {
             switch(parameters.QueryName)
             {
+                case QueryName.DailySales:
+                    return new DailySalesQuery(parameters as SalesQueryParameters, QueryClauseFactory);
+
                 case QueryName.SalesSummary:
                     return new SalesSummaryQuery(parameters as SalesQueryParameters, QueryClauseFactory);
 

@@ -13,6 +13,7 @@ namespace Pertemps.Models.QueryFactories
         {
             switch(parameters.QueryName)
             {
+                case QueryName.DailySales:
                 case QueryName.SalesSummary:
                     return new SalesWhereClause(parameters as SalesQueryParameters);
 

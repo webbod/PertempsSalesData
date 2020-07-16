@@ -1,37 +1,40 @@
-﻿using Dapper;
-using Pertemps.Common.Enumerations;
+﻿using Pertemps.Common.Enumerations;
 using Pertemps.Concrete.Interfaces;
-using Pertemps.Models.Business;
-using Pertemps.Models.Entities;
-using Pertemps.Models.QueryFactories;
+using Pertemps.Interfaces.Repository;
+using Pertemps.Models.BusinessModels;
 using Pertemps.Models.QueryParameters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Pertemps.Concrete.Models.Repositories
 {
-    public class SalesDataRepository : ADapperRepository<SalesData>, IIsASalesDataRepository
+    public class SalesDataRepository : ADapperRepository<IIsSalesData>, IIsASalesDataRepository
     {
-        public SalesDataRepository(string connectionString) : base(connectionString)
+        public SalesDataRepository(string connectionString) : base(connectionString) { }
+
+        public List<SalesData> GetDailySales(SalesQueryParameters queryData)
         {
+            if (queryData.QueryName != QueryName.DailySales)
+            {
+                throw new ArgumentException();
+            }
+
+            return ExecuteQuery<SalesData>(queryData)?.ToList();
         }
 
         public List<SalesSummaryData> GetSalesSummary(SalesQueryParameters queryData)
         {
-            var queryFactory = new QueryFactory();
-            var querySQL = queryFactory.Build(queryData).SQL;
-
-            using (var connection = GetNewConnection())
+            if(queryData.QueryName != QueryName.SalesSummary)
             {
-                var results = connection.Query<SalesSummaryData>(querySQL).ToList();
-
-                results
-                    .ComputePercentages(DatabaseField.ItemType)
-                    .ComputePercentages(DatabaseField.OrderPriority)
-                    .ComputePercentages(DatabaseField.SalesChannel);
-
-                return results;
+                throw new ArgumentException();
             }
+
+            return ExecuteQuery<SalesSummaryData>(queryData)
+                .ToList()
+                .ComputePercentages(DatabaseField.ItemType)
+                .ComputePercentages(DatabaseField.OrderPriority)
+                .ComputePercentages(DatabaseField.SalesChannel);
         }
     }
 }
