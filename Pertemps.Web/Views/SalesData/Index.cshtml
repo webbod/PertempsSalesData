@@ -11,19 +11,13 @@
 
 <section class="pieCharts">
     <div class="pieChart-container">
-        <div class="pie DivisionData">
-            @{ RenderPie(Model.DivisionData); }
-        </div>
+        @{ RenderPie(Model.DivisionData, "DivisionData"); }
     </div>
     <div class="pieChart-container">
-        <div class="pie SalesChannel">
-            @{ RenderPie(Model.SalesChannelData); }
-        </div>
+        @{ RenderPie(Model.SalesChannelData, "SalesChannel"); }
     </div>
     <div class="pieChart-container">
-        <div class="pie OrderPriority">
-            @{ RenderPie(Model.OrderPriorityData); }
-        </div>
+        @{ RenderPie(Model.OrderPriorityData, "OrderPriority"); }
     </div>
 </section>
 
@@ -54,20 +48,32 @@
         }
     }
 
-    void RenderPie(List<SalesSummaryData> items)
+    void RenderPie(List<SalesSummaryData> items, string pieName)
     {
-        var runningTotal = 0m;
-        // this is profit for now
-        foreach (var item in items.OrderByDescending(i => i.TotalProfitPercentage))
-        {
-            var className = $"segment__{item.Category.Replace(' ', '_')}";
+        pieName = items.Count() == 1 ? GetSegmentName(items.First().Category) : pieName;
 
-            <div class="pie__segment @className" style="--offset: @runningTotal; --value: @item.TotalProfitPercentage ; --over50: @(item.TotalProfitPercentage > 50 ? 1: 0)" 
-                 data-start="@runningTotal" data-end="@(item.TotalProfitPercentage + runningTotal)"></div>
+        <div id="@pieName" class="pie @pieName">
+            @{ 
+                if (items.Count() > 1) 
+                { 
+                    var runningTotal = 0m;
+                    // this is profit for now
+                    foreach (var item in items.OrderByDescending(i => i.TotalProfitPercentage))
+                    {
+                        var className = GetSegmentName(item.Category);
 
-            runningTotal += item.TotalProfitPercentage;
-        }
+                        <div class="pie__segment @className" style="--offset: @runningTotal; --value: @item.TotalProfitPercentage ; --over50: @(item.TotalProfitPercentage > 50 ? 1 : 0)" 
+                        data-start="@runningTotal" data-end="@(item.TotalProfitPercentage + runningTotal)"></div>
 
+                        runningTotal += item.TotalProfitPercentage;
+                    }
+                }
+            }
+        </div>
+    }
+
+    string GetSegmentName(string value) {
+        return $"segment__{value.Replace(' ', '_')}";
     }
 
     void RenderTable(List<SalesSummaryData> items, string caption, DatabaseField section, bool filterable = true)
@@ -90,7 +96,8 @@
                     <td>
                         @if (filterable)
                         {
-                            <a href="@Model.BuildURL(section, item.Category)">@item.Category</a>
+                            // &#xFE0E; stopes chrome rendering it as an emoji
+                            <span class="pie__chip @GetSegmentName(item.Category)">⚫&#xFE0E;</span><a href="@Model.BuildURL(section, item.Category)">@item.Category</a>
                         }
                         else
                         {
@@ -110,16 +117,23 @@
 }
 
 <script>
-    const pie = document.querySelector('.pie');
-    const actions = document.querySelector('.actions');
-    const segments = pie.children;
 
-    // capture events at the pie, don't pass them down to the segment
-    pie.addEventListener('mousemove', highlightSegment, true);
-    pie.addEventListener('mouseout', clearHighlight, true);
+    bindPieCharts("#DivisionData");
+    bindPieCharts("#SalesChannel");
+    bindPieCharts("#OrderPriority");
 
+    function bindPieCharts(name) {
+        var pie = document.querySelector(name)
+        pie.addEventListener('mousemove', highlightSegment, true);
+        pie.addEventListener('mouseout', clearHighlight, true);
+    }
 
-    function clearHighlight() {
+    function getSegments(e) {
+        return e.srcElement.parentElement.children;
+    }
+
+    function clearHighlight(e) {
+        var segments = getSegments(e);
         for(var i = 0; i < segments.length; i++){
             var item = segments[i];
             item.classList.remove("hovered");
@@ -129,6 +143,8 @@
     function highlightSegment(e) {
         event.stopPropagation();
         event.preventDefault();
+
+        var pie = e.srcElement.parentElement;
 
         // e = Mouse click event.
         var rect = pie.getBoundingClientRect();
@@ -152,6 +168,8 @@
         angle += a < 0 ? 270 : 90;
 
         var percentage = angle/360*100;
+
+        var segments = getSegments(e);
 
         for(var i = 0; i < segments.length; i++){
 
