@@ -9,6 +9,24 @@
 <h2><a href="/Analytics/SalesData/ByPeriod/">@Model.Period</a></h2>
 <h3>For @Model.DivisionCaption - @Model.SalesChannelCaption - @Model.OrderPriorityCaption </h3>
 
+<section class="pieCharts">
+    <div class="pieChart-container">
+        <div class="pie DivisionData">
+            @{ RenderPie(Model.DivisionData); }
+        </div>
+    </div>
+    <div class="pieChart-container">
+        <div class="pie SalesChannel">
+            @{ RenderPie(Model.SalesChannelData); }
+        </div>
+    </div>
+    <div class="pieChart-container">
+        <div class="pie OrderPriority">
+            @{ RenderPie(Model.OrderPriorityData); }
+        </div>
+    </div>
+</section>
+
 <section>
     <h4>By Division @{ RenderShowAll(DatabaseField.ItemType, Model.QueryParams.ItemType.ToString()); } </h4>
     @{ RenderTable(Model.DivisionData, "Category", DatabaseField.ItemType); }
@@ -24,7 +42,7 @@
 
 <section>
     <h4>Daily </h4>
-    @{ RenderTable(Model.DailyData, "Date", DatabaseField.OrderPriority, filterable:false); }
+    @{ RenderTable(Model.DailyData, "Date", DatabaseField.OrderPriority, filterable: false); }
 </section>
 
 @{
@@ -34,6 +52,22 @@
         {
             <a href="@Model.BuildURL(section, "All")" class="showAll">Show all</a>
         }
+    }
+
+    void RenderPie(List<SalesSummaryData> items)
+    {
+        var runningTotal = 0m;
+        // this is profit for now
+        foreach (var item in items.OrderByDescending(i => i.TotalProfitPercentage))
+        {
+            var className = $"segment__{item.Category.Replace(' ', '_')}";
+
+            <div class="pie__segment @className" style="--offset: @runningTotal; --value: @item.TotalProfitPercentage ; --over50: @(item.TotalProfitPercentage > 50 ? 1: 0)" 
+                 data-start="@runningTotal" data-end="@(item.TotalProfitPercentage + runningTotal)"></div>
+
+            runningTotal += item.TotalProfitPercentage;
+        }
+
     }
 
     void RenderTable(List<SalesSummaryData> items, string caption, DatabaseField section, bool filterable = true)
@@ -75,3 +109,60 @@
     }
 }
 
+<script>
+    const pie = document.querySelector('.pie');
+    const actions = document.querySelector('.actions');
+    const segments = pie.children;
+
+    // capture events at the pie, don't pass them down to the segment
+    pie.addEventListener('mousemove', highlightSegment, true);
+    pie.addEventListener('mouseout', clearHighlight, true);
+
+
+    function clearHighlight() {
+        for(var i = 0; i < segments.length; i++){
+            var item = segments[i];
+            item.classList.remove("hovered");
+        }
+    }
+
+    function highlightSegment(e) {
+        event.stopPropagation();
+        event.preventDefault();
+
+        // e = Mouse click event.
+        var rect = pie.getBoundingClientRect();
+        var x = e.x - rect.left; //x position within the element.
+        var y = e.y - rect.top;  //y position within the element.
+        var cx = (rect.right-rect.left)/2;
+        var cy = (rect.bottom-rect.top)/2;
+
+        var o = y-cy;
+        var a = x-cx;
+
+        var angle;
+
+        if(a != 0){
+                angle = Math.atan(o / a) * 360 / (2 * Math.PI);
+            }
+        else {
+                angle = o < 0 ? 90 : 180
+        }
+
+        angle += a < 0 ? 270 : 90;
+
+        var percentage = angle/360*100;
+
+        for(var i = 0; i < segments.length; i++){
+
+            var item = segments[i];
+
+            if (percentage >= item.getAttribute("data-start") && percentage < item.getAttribute("data-end")) {
+                    item.classList.add("hovered");
+            }
+            else {
+                    item.classList.remove("hovered");
+            }
+        }
+    }
+</script>

@@ -137,3 +137,164 @@ h4 {
 nav {
     text-align: right;
 }
+
+.pieCharts {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 300px;
+    margin:20px 0px;
+}
+
+.pieChart-container {
+    width: 300px;
+    position: relative;
+    display: inline-block;
+    justify-self: center;
+}
+
+.pieChart {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-radius: 500px;
+    border: #fcfcfc 1px solid;
+}
+
+.pie.DivisionData {
+    background: #444;
+}
+
+.pie.SalesChannel {
+    background: #777;
+}
+
+.pie.OrderPriority {
+    background: #aaa;
+}
+
+.segment__Personal_Care {
+    --bg: #ff0000;
+}
+
+.segment__Cosmetics {
+    --bg: #ffcc00;
+}
+
+.segment__Fruits {
+    --bg: #ffff00;
+}
+
+.segment__Baby_Food {
+    --bg: #ccff00;
+}
+
+.segment__Beverages {
+    --bg: #00ff00;
+}
+
+.segment__Office_Supplies {
+    --bg: #00ffcc;
+}
+
+.segment__Vegetables {
+    --bg: #00ffff;
+}
+
+.segment__Clothes {
+    --bg: #00ccff;
+}
+
+.segment__Meat {
+    --bg: #0000ff;
+}
+
+.segment__Household {
+    --bg: #cc00ff;
+}
+
+.segment__Cereal {
+    --bg: #ff00ff;
+}
+
+.segment__Offline {
+    --bg: #ffcc00;
+}
+
+.segment__Online {
+    --bg: #ccff00;
+}
+
+.segment__H {
+    --bg: #cc00ff;
+}
+
+.segment__C {
+    --bg: #00ffcc;
+}
+
+.segment__L {
+    --bg: #ff00cc;
+}
+
+.segment__M {
+    --bg: #00ccff;
+}
+
+.pie {
+    border-radius: 100%;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+    width: 300px;
+}
+
+.pie__segment {
+    --a: calc(var(--over50, 0) * -100%);
+    --b: calc((1 + var(--over50, 0)) * 100%);
+    --degrees: calc((var(--offset, 0) / 100) * 360);
+    -webkit-clip-path: polygon(var(--a) var(--a), var(--b) var(--a), var(--b) var(--b), var(--a) var(--b));
+    clip-path: polygon(var(--a) var(--a), var(--b) var(--a), var(--b) var(--b), var(--a) var(--b));
+    height: 100%;
+    position: absolute;
+    -webkit-transform: translate(0, -50%) rotate(90deg) rotate(calc(var(--degrees) * 1deg));
+    transform: translate(0, -50%) rotate(90deg) rotate(calc(var(--degrees) * 1deg));
+    -webkit-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+    width: 100%;
+    z-index: calc(1 + var(--over50));
+}
+
+    .pie__segment:after,
+    .pie__segment:before {
+        background: var(--bg, #e74c3c);
+        content: '';
+        height: 100%;
+        position: absolute;
+        width: 100%;
+    }
+
+    .pie__segment:before {
+        --degrees: calc((var(--value, 45) / 100) * 360);
+        -webkit-transform: translate(0, 100%) rotate(calc(var(--degrees) * 1deg));
+        transform: translate(0, 100%) rotate(calc(var(--degrees) * 1deg));
+        -webkit-transform-origin: 50% 0%;
+        transform-origin: 50% 0%;
+    }
+
+    .pie__segment:after {
+        opacity: var(--over50, 0);
+    }
+
+* {
+    box-sizing: border-box;
+}
+
+.pie__segment {
+    opacity: 0.6;
+}
+
+    .pie__segment.hovered {
+        opacity: 1;
+    }
