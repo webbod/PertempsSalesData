@@ -8,9 +8,20 @@ namespace UnitTests
     public class QueryLogicTests
     {
         [Fact]
-        public void WhereDateRangeDoesNotAcceptNullDates()
+        public void WhereDateRangeDoesNotAcceptNullStartDate()
         {
             Assert.Throws<ArgumentNullException>(() => new WhereDateRange(default(DateTime), default(DateTime), DatabaseField.OrderDate));
+        }
+
+        [Fact]
+        public void WhereDateRangeSetsNullEndDateToEqualStartDate()
+        {
+            var objectUnderTest = new WhereDateRange(new DateTime(2017,09,13), default(DateTime), DatabaseField.OrderDate);
+
+            var expected = "convert(datetime, [order date]) between '2017/09/13' and '2017/09/13'";
+            var actual = objectUnderTest.Compile().Trim();
+
+            Assert.Equal(expected, actual);
         }
 
         [Fact]

@@ -13,7 +13,7 @@ namespace Pertemps.Models.Clauses
             IIsAQueryClause aggregateClause = new EmptyClause();
 
             // Either between a these dates or by quarter
-            if (!queryParams.StartDate.Equals(default) && !queryParams.EndDate.Equals(default))
+            if (!queryParams.StartDate.Equals(default))
             {
                 aggregateClause = aggregateClause.ChainClauses(new WhereDateRange(
                     queryParams.StartDate, queryParams.EndDate, DatabaseField.OrderDate));
