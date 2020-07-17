@@ -14,19 +14,24 @@ namespace Pertemps.Models.QueryFactories
             SQL = sql;
         }
 
-        public static string SumAFieldExpression(DatabaseField field, string castingType = "decimal")
+        public static string SumAFieldExpression(DatabaseField field, string castingType = "decimal", bool withAlias = true)
         {
-            return $" SUM({CastFieldToNumeric(field, castingType)}) as {field.ToString()} ";
+            return $" SUM({CastFieldToNumeric(field, castingType, withAlias:false)}) {GenerateAlias(field, withAlias)} ";
         }
 
-        public static string CastFieldToNumeric(DatabaseField field, string castingType = "decimal")
+        public static string CastFieldToNumeric(DatabaseField field, string castingType = "decimal", bool withAlias = true)
         {
-            return $" CONVERT({castingType},{ field.GetDescription()} ";
+            return $" CONVERT({castingType},{ field.GetDescription()}) {GenerateAlias(field, withAlias)} ";
         }
 
-        public static string CastFieldToDate(DatabaseField field)
+        public static string CastFieldToDate(DatabaseField field, bool withAlias = true)
         {
-            return $" CONVERT(VARCHAR,CONVERT(DATETIME, {field.GetDescription()}),23) ";
+            return $" CONVERT(VARCHAR,CONVERT(DATETIME, {field.GetDescription()}),23) {GenerateAlias(field, withAlias)} ";
+        }
+
+        public static string GenerateAlias(DatabaseField field, bool generateAlias)
+        {
+            return $" {(generateAlias ? $" as {field.ToString()} " : "")} ";
         }
     }
 }

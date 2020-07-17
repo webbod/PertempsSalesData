@@ -19,7 +19,7 @@ namespace Pertemps.Models.Queries
             sb.AppendLine("union all");
             sb.AppendLine(SalesTotalsGroupedByColumn(DatabaseField.SalesChannel, whereClause));
             sb.AppendLine("union all");
-            sb.AppendLine(SalesTotalsGroupedByColumn(CastFieldToDate(DatabaseField.OrderDate), DatabaseField.OrderDate.ToString(), whereClause));
+            sb.AppendLine(SalesTotalsGroupedByColumn(CastFieldToDate(DatabaseField.OrderDate, withAlias:false), DatabaseField.OrderDate.ToString(), whereClause));
 
             SQL = sb.ToString();
         }
