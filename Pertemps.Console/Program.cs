@@ -3,6 +3,7 @@ using Pertemps.Concrete.Models.Repositories;
 using Pertemps.Models.BusinessModels;
 using Pertemps.Models.QueryFactories;
 using Pertemps.Models.QueryParameters;
+using System;
 using System.Collections.Generic;
 
 namespace Pertemps.Console
@@ -15,14 +16,13 @@ namespace Pertemps.Console
 
             var queryData = new SalesQueryParameters
             {
-                QueryName = QueryName.SalesSummary,
+                QueryName = QueryName.DailySales,
                 Region = Region.SubSaharanAfrica,
-                Country = Country.Botswana,
-                ItemType = ItemType.Beverages,
-                OrderPriority = OrderPriority.L,
-                SalesChannel = SalesChannel.Online,
-                Quarter = Quarter.Q1,
-                Year = 2016
+                //Country = Country.Botswana,
+                //ItemType = ItemType.Beverages,
+                //OrderPriority = OrderPriority.L,
+                //SalesChannel = SalesChannel.Online,
+                StartDate = new DateTime(2012,03,01)
             };
            
             var query = queryFactory.Build(queryData);
@@ -35,10 +35,10 @@ namespace Pertemps.Console
         }
 
 
-        public static List<SalesSummaryData> GetSalesSummary(SalesQueryParameters queryData, string cnn)
+        public static List<SalesData> GetSalesSummary(SalesQueryParameters queryData, string cnn)
         {
             var pertempsData = new PertempsDataService(cnn);
-            return pertempsData.SalesData.GetSalesSummary(queryData);
+            return pertempsData.SalesData.GetDailySales(queryData);
         }
 
 
